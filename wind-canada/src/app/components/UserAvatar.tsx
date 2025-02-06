@@ -1,13 +1,15 @@
-import { auth } from "../auth"
- 
+import { auth } from "../auth";
+import Image from "next/image";
+
 export default async function UserAvatar() {
-  const session = await auth()
- 
-  if (!session?.user) return null
+  const session = await auth();
+
+  if (!session?.user) return null;
+  const imageSrc = session.user.image ?? "/images/default-avatar.png";
 
   return (
     <div>
-      <img src={session.user.image} alt="User Avatar" />
+      <Image src={imageSrc} alt="User Avatar" width={100} height={100} />
     </div>
-  )
+  );
 }
