@@ -1,13 +1,15 @@
 # Canada Wind Load Calculation Web App (NBCC 2020 Compliant)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
+
 
 **Currently under development**
 
 A web-based tool for calculating wind loads on buildings, compliant with the National Building Code of Canada (NBCC) 2020. This project aims to provide an accessible and user-friendly way to determine wind loads for structural design purposes, adhering to the NBCC 2020 standards.
 
-Website link: [website](https://nathaphat.dev)
+Currently hosted on: [nathaphat.dev](https://nathaphat.dev)
+**To be moved later into another domain*
+
 
 ## Disclaimer
 
