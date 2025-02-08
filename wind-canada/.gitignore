@@ -44,3 +44,7 @@ next-env.d.ts
 
 .vscode/
 ._*
+
+/src/app/db*
+
+/src/app/comments
