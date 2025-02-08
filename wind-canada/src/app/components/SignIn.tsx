@@ -1,4 +1,5 @@
 import { signIn } from "@/app/auth";
+import Link from "next/link";
 
 export default function SignIn() {
   return (
@@ -7,14 +8,14 @@ export default function SignIn() {
         <nav className="flex justify-between items-center p-2 sm:p-6">
           <div className="text-xl font-normal text-gray-800">Wind Canada</div>
           <div className="flex items-center space-x-4">
-            <a
+            <Link
               href="/"
               rel="noopener noreferrer"
               className="text-gray-700 hover:text-gray-900"
               aria-label="Home"
             >
               Home
-            </a>
+            </Link>
           </div>
         </nav>
       </header>
