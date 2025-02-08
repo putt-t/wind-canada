@@ -9,10 +9,17 @@ import { sendVerificationRequest } from "@/app/lib/authSendRequest";
 export const { auth, handlers, signIn, signOut } = NextAuth(() => {
   const pool = new Pool({ connectionString: process.env.DATABASE_URL });
   const emailFrom = process.env.EMAIL_FROM;
+  const resendApiKey = process.env.AUTH_RESEND_KEY;
   
   if (!emailFrom) {
     throw new Error(
       "EMAIL_FROM environment variable must be set."
+    );
+  }
+
+  if (!resendApiKey) {
+    throw new Error(
+      "AUTH_RESEND_KEY environment variable must be set."
     );
   }
 
@@ -29,8 +36,20 @@ export const { auth, handlers, signIn, signOut } = NextAuth(() => {
       }),
       Resend({
         from: emailFrom,
-        apiKey: process.env.RESEND_API_KEY, 
-        sendVerificationRequest, 
+        sendVerificationRequest: async (params) => {
+          await sendVerificationRequest({
+            identifier: params.identifier,
+            url: params.url,
+            provider: {
+              apiKey: resendApiKey,
+              from: emailFrom,
+            },
+            theme: {
+              brandColor: "#346df1",
+              buttonText: "#fff",
+            },
+          });
+        },
       }),
     ],
     session: {
@@ -48,7 +67,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth(() => {
       },
     },
     pages: {
-      verifyRequest: '/verify-request',
       signIn: '/signin',
     },
   };

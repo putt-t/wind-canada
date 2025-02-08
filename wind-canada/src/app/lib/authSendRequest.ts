@@ -2,18 +2,17 @@ import { Theme } from "@auth/core/types";
 
 interface SendVerificationRequestParams {
   identifier: string;
+  url: string;
   provider: {
     apiKey: string;
     from: string;
   };
-  url: string;
   theme: Theme;
 }
 
-
-export async function sendVerificationRequest(params: { identifier: any; provider: any; url: any; theme: any; }) {
-  const { identifier: to, provider, url, theme } = params
-  const { host } = new URL(url)
+export async function sendVerificationRequest(params: SendVerificationRequestParams) {
+  const { identifier: to, provider, url, theme } = params;
+  const { host } = new URL(url);
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -27,18 +26,18 @@ export async function sendVerificationRequest(params: { identifier: any; provide
       html: html({ url, host, theme }),
       text: text({ url, host }),
     }),
-  })
- 
+  });
+
   if (!res.ok)
-    throw new Error("Resend error: " + JSON.stringify(await res.json()))
+    throw new Error("Resend error: " + JSON.stringify(await res.json()));
 }
- 
+
 function html(params: { url: string; host: string; theme: Theme }) {
-  const { url, host, theme } = params
- 
-  const escapedHost = host.replace(/\./g, "&#8203;.")
- 
-  const brandColor = theme.brandColor || "#346df1"
+  const { url, host, theme } = params;
+
+  const escapedHost = host.replace(/\./g, "&#8203;.");
+
+  const brandColor = theme.brandColor || "#346df1";
   const color = {
     background: "#f9f9f9",
     text: "#444",
@@ -46,8 +45,8 @@ function html(params: { url: string; host: string; theme: Theme }) {
     buttonBackground: brandColor,
     buttonBorder: brandColor,
     buttonText: theme.buttonText || "#fff",
-  }
- 
+  };
+
   return `
 <body style="background: ${color.background};">
   <table width="100%" border="0" cellspacing="20" cellpadding="0"
@@ -78,10 +77,9 @@ function html(params: { url: string; host: string; theme: Theme }) {
     </tr>
   </table>
 </body>
-`
+`;
 }
- 
-// Email Text body (fallback)
+
 function text({ url, host }: { url: string; host: string }) {
-  return `Sign in to ${host}\n${url}\n\n`
+  return `Sign in to ${host}\n${url}\n\n`;
 }

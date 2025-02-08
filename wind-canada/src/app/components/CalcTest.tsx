@@ -28,7 +28,7 @@ export default function Calculator() {
 
       const data = await response.json();
       setResult(data.result);
-    } catch (err: any) {
+    } catch (err: Error | any) {
       console.error(err);
       setError((err as Error).message || 'Calculation failed');
       setResult(null);
