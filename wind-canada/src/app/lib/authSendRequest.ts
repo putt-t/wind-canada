@@ -1,5 +1,16 @@
 import { Theme } from "@auth/core/types";
 
+interface SendVerificationRequestParams {
+  identifier: string;
+  provider: {
+    apiKey: string;
+    from: string;
+  };
+  url: string;
+  theme: Theme;
+}
+
+
 export async function sendVerificationRequest(params: { identifier: any; provider: any; url: any; theme: any; }) {
   const { identifier: to, provider, url, theme } = params
   const { host } = new URL(url)

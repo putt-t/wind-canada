@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 async function calculate(input: number): Promise<number> {
   // FACT 1.
-  let result = 1;
+  let result = input * input;
   return result;
 }
 

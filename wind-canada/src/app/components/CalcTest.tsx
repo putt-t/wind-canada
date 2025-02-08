@@ -13,7 +13,7 @@ export default function Calculator() {
     setError(null);
 
     try {
-      const response = await fetch('/api/calculate', {
+      const response = await fetch('/api/test/calculations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ export default function Calculator() {
       setResult(data.result);
     } catch (err: any) {
       console.error(err);
-      setError(err.message || 'Calculation failed');
+      setError((err as Error).message || 'Calculation failed');
       setResult(null);
     } finally {
       setIsLoading(false);

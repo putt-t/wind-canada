@@ -6,7 +6,7 @@ import PostgresAdapter from "@auth/pg-adapter";
 import { Pool } from "@neondatabase/serverless";
 import { sendVerificationRequest } from "@/app/lib/authSendRequest";
 
-export const { auth, handlers, signIn, signOut } = NextAuth((req) => {
+export const { auth, handlers, signIn, signOut } = NextAuth(() => {
   const pool = new Pool({ connectionString: process.env.DATABASE_URL });
   const emailFrom = process.env.EMAIL_FROM;
   
