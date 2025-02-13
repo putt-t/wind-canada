@@ -47,35 +47,6 @@ export default function SignIn() {
               Sign in with GitHub
             </button>
           </form>
-          <form
-            action={async (formData) => {
-              "use server";
-              await signIn("resend", {
-                email: formData.get("email") as string,
-                redirectTo: "/landing",
-                callbackUrl: "/landing",
-              });
-            }}
-          >
-            <div className="mb-4">
-              <label className="block text-gray-700 mb-2" htmlFor="email">
-                or Sign in via verification link to Email
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="email"
-                type="email"
-                name="email"
-                placeholder="Email"
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-            >
-              Login via Email
-            </button>
-          </form>
         </section>
       </main>
     </div>

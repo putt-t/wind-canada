@@ -8,6 +8,25 @@ export function UpdateBoard() {
               Feature Added
             </span>
             <h2 className="font-medium text-sm sm:text-base">
+              Added Importance Factor
+            </h2>
+          </div>
+          <span className="text-gray-500 text-xs sm:text-sm">
+            February 12, 2025
+          </span>
+        </div>
+        <p className="text-gray-600 text-sm">
+          Added the option of choosing importance category (Low, Normal, High, Post-disaster) 
+          and limit state (ULS and SLS) which will be used in IwqCeCpCg calculations.
+        </p>
+      </div>
+      <div className="border rounded-lg p-4 sm:p-6 bg-white">
+        <div className="flex justify-between items-center mb-2">
+          <div className="flex items-center gap-2">
+            <span className="bg-yellow-100 px-2 py-1 text-xs sm:text-sm">
+              Past Feature
+            </span>
+            <h2 className="font-medium text-sm sm:text-base">
               Added Login Options
             </h2>
           </div>

@@ -1,6 +1,7 @@
 import { auth } from "@/app/auth";
 import { SignOut } from "../components/SignOut";
-import Calculator from "../components/CalcTest";
+import ImportanceFactorDisplay from "../components/ImportanceFactorDisplay";
+
 
 export default async function Page() {
   const session = await auth();
@@ -8,8 +9,7 @@ export default async function Page() {
 
   return (
     <div>
-      <p className="text-gray-600 mt-2">this app is still under dev.</p>
-      <Calculator />
+      <ImportanceFactorDisplay />
       <SignOut />
     </div>
   );
